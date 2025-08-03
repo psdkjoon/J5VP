@@ -101,8 +101,7 @@
     
     <!-- Full verb data (124 verbs) -->
     <script id="verb-data" type="application/json">
-[
-{"kanji":"会う","kana":"あう","meaning":"to meet","type":"u-verb"},
+[{"kanji":"会う","kana":"あう","meaning":"to meet","type":"u-verb"},
 {"kanji":"遊ぶ","kana":"あそぶ","meaning":"to play","type":"u-verb"},
 {"kanji":"洗う","kana":"あらう","meaning":"to wash","type":"u-verb"},
 {"kanji":"ある","kana":"ある","meaning":"to exist (things)","type":"u-verb"},
@@ -225,8 +224,7 @@
 {"kanji":"磨く","kana":"みがく","meaning":"to polish/brush","type":"u-verb"},
 {"kanji":"迎える","kana":"むかえる","meaning":"to welcome","type":"ru-verb"},
 {"kanji":"役に立つ","kana":"やくにたつ","meaning":"to be useful","type":"u-verb"},
-{"kanji":"渡る","kana":"わたる","meaning":"to cross","type":"u-verb"}
-]
+{"kanji":"渡る","kana":"わたる","meaning":"to cross","type":"u-verb"}]
     </script>
     
     <!-- Main application logic -->
@@ -290,10 +288,8 @@
                 kanjiEl.textContent = verb.kanji;
                 typeEl.textContent = verb.type;
 
-                // --- NO CHANGES TO HANDWRITING LOGIC ---
                 handwritingContainer.innerHTML = '';
                 if (verb.kanji && verb.kanji !== '---') {
-                    // This regex correctly extracts only the Kanji characters for practice
                     const kanjiToPractice = verb.kanji.replace(/[^一-龯]/g, '');
                     if (kanjiToPractice.length > 0) {
                         for (const char of kanjiToPractice) {
@@ -317,6 +313,11 @@
                     }
                 } else {
                     handwritingContainer.innerHTML = '<p style="color: #888;">No Kanji for this verb.</p>';
+                }
+
+                // Automatically read the kana
+                if (verb.kana) {
+                    speak(verb.kana);
                 }
             }
             
