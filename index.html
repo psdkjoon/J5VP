@@ -18,12 +18,7 @@
             padding: 20px;
             box-sizing: border-box;
         }
-
-        h1 {
-            color: #ffa011;
-            font-weight: 300;
-        }
-
+        h1 { color: #ffa011; font-weight: 300; }
         #flashcard {
             background-color: #1e1e1e;
             border-radius: 12px;
@@ -31,10 +26,9 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.4);
             text-align: center;
             width: 100%;
-            max-width: 480px; /* Increased max-width to better fit multiple kanji */
+            max-width: 480px;
             border: 1px solid #333;
         }
-
         #verb-info p {
             font-size: 1.25em;
             margin: 12px 0;
@@ -47,24 +41,21 @@
             font-weight: 500;
             margin-right: 8px;
         }
-
         #handwriting-container {
             margin: 20px 0;
-            display: flex; /* Use Flexbox to align multiple kanji boxes */
+            display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap; /* Allows wrapping if too many kanji */
-            gap: 10px; /* Adds a nice space between kanji boxes */
+            flex-wrap: wrap;
+            gap: 10px;
             min-height: 150px;
         }
-
         .kanji-box {
             background-color: #fff;
             border-radius: 8px;
-            width: 150px; /* Set a fixed size for each kanji box */
+            width: 150px;
             height: 150px;
         }
-
         button#next-button {
             background-color: #ffa011;
             color: #121212;
@@ -77,11 +68,7 @@
             font-weight: bold;
             transition: background-color 0.2s ease;
         }
-
-        button#next-button:hover {
-            background-color: #a86706;
-        }
-        
+        button#next-button:hover { background-color: #a86706; }
         #speak-button {
             background: none;
             border: none;
@@ -105,15 +92,19 @@
             <p><strong>Kanji:</strong> <span id="kanji"></span></p>
             <p><strong>Type:</strong> <span id="type"></span></p>
         </div>
-        <div id="handwriting-container">
-            </div>
+        <div id="handwriting-container"></div>
         <button id="next-button">Next Verb</button>
     </div>
 
+    <!-- The HanziWriter library for handwriting practice -->
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+    
+    <!-- Your verb data remains exactly the same -->
     <script id="verb-data" type="application/json">
         [{"kanji":"有る","kana":"ある","meaning":"to be, to have","type":"u-verb"},{"kanji":"行く","kana":"いく","meaning":"to go","type":"u-verb"},{"kanji":"要る","kana":"いる","meaning":"to need","type":"u-verb"},{"kanji":"会う","kana":"あう","meaning":"to meet","type":"u-verb"},{"kanji":"開ける","kana":"あける","meaning":"to open","type":"ru-verb"},{"kanji":"遊ぶ","kana":"あそぶ","meaning":"to play","type":"u-verb"},{"kanji":"集まる","kana":"あつまる","meaning":"to gather","type":"u-verb"},{"kanji":"浴びる","kana":"あびる","meaning":"to bathe","type":"ru-verb"},{"kanji":"洗う","kana":"あらう","meaning":"to wash","type":"u-verb"},{"kanji":"言う","kana":"いう","meaning":"to say","type":"u-verb"},{"kanji":"入れる","kana":"いれる","meaning":"to insert","type":"ru-verb"},{"kanji":"動く","kana":"うごく","meaning":"to move","type":"u-verb"},{"kanji":"歌う","kana":"うたう","meaning":"to sing","type":"u-verb"},{"kanji":"生まれる","kana":"うまれる","meaning":"to be born","type":"ru-verb"},{"kanji":"売る","kana":"うる","meaning":"to sell","type":"u-verb"},{"kanji":"起きる","kana":"おきる","meaning":"to wake up","type":"ru-verb"},{"kanji":"置く","kana":"おく","meaning":"to put","type":"u-verb"},{"kanji":"教える","kana":"おしえる","meaning":"to teach","type":"ru-verb"},{"kanji":"押す","kana":"おす","meaning":"to push","type":"u-verb"},{"kanji":"覚える","kana":"おぼえる","meaning":"to remember","type":"ru-verb"},{"kanji":"泳ぐ","kana":"およぐ","meaning":"to swim","type":"u-verb"},{"kanji":"降りる","kana":"おりる","meaning":"to get off","type":"ru-verb"},{"kanji":"終わる","kana":"おわる","meaning":"to end","type":"u-verb"},{"kanji":"買う","kana":"かう","meaning":"to buy","type":"u-verb"},{"kanji":"返す","kana":"かえす","meaning":"to return (a thing)","type":"u-verb"},{"kanji":"帰る","kana":"かえる","meaning":"to go home","type":"u-verb"},{"kanji":"掛かる","kana":"かかる","meaning":"to take (time, money)","type":"u-verb"},{"kanji":"書く","kana":"かく","meaning":"to write","type":"u-verb"},{"kanji":"借りる","kana":"かりる","meaning":"to borrow","type":"ru-verb"},{"kanji":"消える","kana":"きえる","meaning":"to disappear","type":"ru-verb"},{"kanji":"聞く","kana":"きく","meaning":"to listen","type":"u-verb"},{"kanji":"決める","kana":"きめる","meaning":"to decide","type":"ru-verb"},{"kanji":"着る","kana":"きる","meaning":"to wear","type":"ru-verb"},{"kanji":"---","kana":"くださる","meaning":"to give (to me)","type":"u-verb"},{"kanji":"---","kana":"くれる","meaning":"to give (to me)","type":"ru-verb"},{"kanji":"閉める","kana":"しめる","meaning":"to close","type":"ru-verb"},{"kanji":"知る","kana":"しる","meaning":"to know","type":"u-verb"},{"kanji":"吸う","kana":"すう","meaning":"to smoke, to inhale","type":"u-verb"},{"kanji":"住む","kana":"すむ","meaning":"to live","type":"u-verb"},{"kanji":"座る","kana":"すわる","meaning":"to sit","type":"u-verb"},{"kanji":"出す","kana":"だす","meaning":"to take out, submit","type":"u-verb"},{"kanji":"立つ","kana":"たつ","meaning":"to stand","type":"u-verb"},{"kanji":"頼む","kana":"たのむ","meaning":"to ask, to request","type":"u-verb"},{"kanji":"食べる","kana":"たべる","meaning":"to eat","type":"ru-verb"},{"kanji":"違う","kana":"ちがう","meaning":"to be different","type":"u-verb"},{"kanji":"使う","kana":"つかう","meaning":"to use","type":"u-verb"},{"kanji":"疲れる","kana":"つかれる","meaning":"to be tired","type":"ru-verb"},{"kanji":"着く","kana":"つく","meaning":"to arrive","type":"u-verb"},{"kanji":"作る","kana":"つくる","meaning":"to make","type":"u-verb"},{"kanji":"付ける","kana":"つける","meaning":"to turn on","type":"ru-verb"},{"kanji":"勤める","kana":"つとめる","meaning":"to work for","type":"ru-verb"},{"kanji":"出掛ける","kana":"でかける","meaning":"to go out","type":"ru-verb"},{"kanji":"---","kana":"できる","meaning":"to be able to","type":"ru-verb"},{"kanji":"出る","kana":"でる","meaning":"to leave","type":"ru-verb"},{"kanji":"飛ぶ","kana":"とぶ","meaning":"to fly","type":"u-verb"},{"kanji":"止まる","kana":"とまる","meaning":"to stop","type":"u-verb"},{"kanji":"取る","kana":"とる","meaning":"to take","type":"u-verb"},{"kanji":"撮る","kana":"とる","meaning":"to take (a photo)","type":"u-verb"},{"kanji":"直す","kana":"なおす","meaning":"to fix","type":"u-verb"},{"kanji":"習う","kana":"ならう","meaning":"to learn","type":"u-verb"},{"kanji":"なる","kana":"なる","meaning":"to become","type":"u-verb"},{"kanji":"脱ぐ","kana":"ぬぐ","meaning":"to take off (clothes)","type":"u-verb"},{"kanji":"寝る","kana":"ねる","meaning":"to sleep","type":"ru-verb"},{"kanji":"登る","kana":"のぼる","meaning":"to climb","type":"u-verb"},{"kanji":"飲む","kana":"のむ","meaning":"to drink","type":"u-verb"},{"kanji":"乗る","kana":"のる","meaning":"to ride","type":"u-verb"},{"kanji":"入る","kana":"はいる","meaning":"to enter","type":"u-verb"},{"kanji":"履く","kana":"はく","meaning":"to wear (below waist)","type":"u-verb"},{"kanji":"始まる","kana":"はじまる","meaning":"to begin","type":"u-verb"},{"kanji":"走る","kana":"はしる","meaning":"to run","type":"u-verb"},{"kanji":"働く","kana":"はたらく","meaning":"to work","type":"u-verb"},{"kanji":"話す","kana":"はなす","meaning":"to speak","type":"u-verb"},{"kanji":"張る","kana":"はる","meaning":"to post, to stick","type":"u-verb"},{"kanji":"晴れる","kana":"はれる","meaning":"to be sunny","type":"ru-verb"},{"kanji":"引く","kana":"ひく","meaning":"to pull","type":"u-verb"},{"kanji":"弾く","kana":"ひく","meaning":"to play (a string instrument)","type":"u-verb"},{"kanji":"太る","kana":"ふとる","meaning":"to get fat","type":"u-verb"},{"kanji":"降る","kana":"ふる","meaning":"to fall (rain, snow)","type":"u-verb"},{"kanji":"曲がる","kana":"まがる","meaning":"to turn","type":"u-verb"},{"kanji":"待つ","kana":"まつ","meaning":"to wait","type":"u-verb"},{"kanji":"磨く","kana":"みがく","meaning":"to brush, to polish","type":"u-verb"},{"kanji":"見せる","kana":"みせる","meaning":"to show","type":"ru-verb"},{"kanji":"見る","kana":"みる","meaning":"to see","type":"ru-verb"},{"kanji":"持つ","kana":"もつ","meaning":"to hold","type":"u-verb"},{"kanji":"休む","kana":"やすむ","meaning":"to rest, to be absent","type":"u-verb"},{"kanji":"痩せる","kana":"やせる","meaning":"to become slim","type":"ru-verb"},{"kanji":"呼ぶ","kana":"よぶ","meaning":"to call","type":"u-verb"},{"kanji":"読む","kana":"よむ","meaning":"to read","type":"u-verb"},{"kanji":"分かる","kana":"わかる","meaning":"to understand","type":"u-verb"},{"kanji":"忘れる","kana":"わすれる","meaning":"to forget","type":"ru-verb"},{"kanji":"渡す","kana":"わたす","meaning":"to hand over","type":"u-verb"},{"kanji":"渡る","kana":"わたる","meaning":"to cross","type":"u-verb"},{"kanji":"笑う","kana":"わらう","meaning":"to laugh","type":"u-verb"},{"kanji":"---","kana":"あげる","meaning":"to give","type":"ru-verb"},{"kanji":"---","kana":"いらっしゃる","meaning":"to be, to go, to come (respectful)","type":"u-verb"},{"kanji":"---","kana":"おっしゃる","meaning":"to say (respectful)","type":"u-verb"},{"kanji":"---","kana":"なさる","meaning":"to do (respectful)","type":"u-verb"},{"kanji":"---","kana":"めしあがる","meaning":"to eat, to drink (respectful)","type":"u-verb"},{"kanji":"---","kana":"ごらんになる","meaning":"to see (respectful)","type":"u-verb"},{"kanji":"---","kana":"いる","meaning":"to be (animate)","type":"ru-verb"},{"kanji":"来る","kana":"くる","meaning":"to come","type":"irregular-verb"},{"kanji":"---","kana":"する","meaning":"to do","type":"irregular-verb"},{"kanji":"勉強する","kana":"べんきょうする","meaning":"to study","type":"irregular-verb"},{"kanji":"連れて来る","kana":"つれてくる","meaning":"to bring (a person)","type":"irregular-verb"},{"kanji":"持って来る","kana":"もってくる","meaning":"to bring (a thing)","type":"irregular-verb"}]
     </script>
+    
+    <!-- Main application logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const meaningEl = document.getElementById('meaning');
@@ -125,8 +116,10 @@
             const handwritingContainer = document.getElementById('handwriting-container');
             const flashcardEl = document.getElementById('flashcard');
 
+            // --- ALL YOUR VERB DATA IS PARSED HERE, NO CHANGES NEEDED ---
             const verbs = JSON.parse(document.getElementById('verb-data').textContent);
             
+            // --- SHUFFLE THE VERBS, NO CHANGES NEEDED ---
             for (let i = verbs.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [verbs[i], verbs[j]] = [verbs[j], verbs[i]];
@@ -134,10 +127,16 @@
 
             let currentVerbIndex = 0;
 
+            // --- CHANGED: A more reliable 'speak' function using the browser's built-in API ---
             function speak(text) {
-                const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=${encodeURIComponent(text)}&tl=ja`;
-                const audio = new Audio(audioUrl);
-                audio.play();
+                // Cancel any previous speech
+                window.speechSynthesis.cancel();
+                // Create a new speech request
+                const utterance = new SpeechSynthesisUtterance(text);
+                // Set the language to Japanese
+                utterance.lang = 'ja-JP';
+                // Speak the text
+                window.speechSynthesis.speak(utterance);
             }
             
             function loadVerb() {
@@ -152,13 +151,15 @@
                 kanjiEl.textContent = verb.kanji;
                 typeEl.textContent = verb.type;
 
-                if (verb.kana) {
-                    speak(verb.kana);
-                }
+                // --- REMOVED: No more automatic speaking on every card load ---
+                // if (verb.kana) {
+                //     speak(verb.kana); 
+                // }
 
+                // --- NO CHANGES TO HANDWRITING LOGIC ---
                 handwritingContainer.innerHTML = '';
-
                 if (verb.kanji && verb.kanji !== '---') {
+                    // This regex correctly extracts only the Kanji characters for practice
                     const kanjiToPractice = verb.kanji.replace(/[^一-龯]/g, '');
                     if (kanjiToPractice.length > 0) {
                         for (const char of kanjiToPractice) {
@@ -172,7 +173,7 @@
                                 showOutline: true,
                                 strokeAnimationSpeed: 1,
                                 delayBetweenStrokes: 200,
-                                strokeColor: '#121212', // Dark stroke color
+                                strokeColor: '#121212',
                                 outlineColor: '#DDDDDD'
                             });
                             writer.quiz();
@@ -185,6 +186,7 @@
                 }
             }
             
+            // --- NO CHANGES TO BUTTON LISTENERS ---
             nextButton.addEventListener('click', () => {
                 currentVerbIndex++;
                 loadVerb();
@@ -196,6 +198,7 @@
                 }
             });
 
+            // --- LOAD THE FIRST VERB ---
             loadVerb();
         });
     </script>
